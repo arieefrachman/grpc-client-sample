@@ -2,12 +2,13 @@ package main
 
 import (
 	"context"
+	"grpc-client-sample/proto"
+
 	"google.golang.org/grpc"
-	"todoClient/proto"
 )
 
 func main() {
-	con, err := grpc.Dial("localhost:4040", grpc.WithInsecure())
+	con, err := grpc.Dial("localhost:7001", grpc.WithInsecure())
 
 	if err != nil {
 		panic(err)
@@ -15,7 +16,7 @@ func main() {
 
 	client := proto.NewAddServiceClient(con)
 
-	req := proto.Request{A:2, B:4}
+	req := proto.Request{A: 2, B: 4}
 
 	ctx := context.Background()
 
